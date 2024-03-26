@@ -33,7 +33,7 @@ public class Runway implements Publisher {
     @Override
     public void subscribe(Subscriber subscriber) {
         this.subscribers.add(subscriber);
-        this.notifySubscribers();
+        subscriber.update(this);
     }
 
     @Override
