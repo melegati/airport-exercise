@@ -1,24 +1,20 @@
 package it.unibz.airport;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Optional;
+import java.util.Map.Entry;
 
-public class AirTrafficControl {
-    private List<Runway> runways;
+public class AirTrafficControl implements Subscriber{
+    private HashMap<String, Boolean> runwayStatus;
 
     public AirTrafficControl() {
-        this.runways = new ArrayList<>();
-    }
-
-    public void subscribeToRunway(Runway runway) {
-        this.runways.add(runway);
+        this.runwayStatus = new HashMap<String, Boolean>();
     }
 
     public String findAvailableRunway() {
-        Optional<Runway> result = this.runways.stream().filter(runway -> runway.isClear()).findFirst();
+        Optional<Entry<String, Boolean>> result = this.runwayStatus.entrySet().stream().filter(runwayStatus -> runwayStatus.getValue()).findAny();
         if (result.isPresent()) {
-            return result.get().getName();
+            return result.get().getKey();
         }
         return null;
     }
@@ -31,6 +27,11 @@ public class AirTrafficControl {
         } else {
             System.out.printf("AIR TRAFFIC CONTROL: next available runway %s%n", availableRunway);
         }
+    }
+
+    @Override
+    public void update(Publisher runway) {
+        this.runwayStatus.put(runway.getName(), runway.isClear());
     }
 
 }

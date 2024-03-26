@@ -34,8 +34,8 @@ public class App {
         for (int i = 1; i < 4; i++) {
             Runway runway = new Runway("Runway " + i);
             runways.add(runway);
-            trafficControl.subscribeToRunway(runway);
-            groundService.subscribeToRunway(runway);
+            runway.subscribe(trafficControl);
+            runway.subscribe(groundService);
         }
         return runways;
     }
