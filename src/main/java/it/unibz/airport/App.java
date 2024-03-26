@@ -11,16 +11,16 @@ public class App {
 
         AirTrafficControl trafficControl = new AirTrafficControl();
         GroundService groundService = new GroundService();
-        List<Runaway> runaways = createRunaways(trafficControl, groundService);
+        List<Runway> runways = createRunways(trafficControl, groundService);
 
-        startRunaways(runaways);
+        startRunways(runways);
 
         groundService.displayMessage();
         trafficControl.displayMessage();
         System.out.println("\n");
 
         for (int i = 0; i < 10; i++) {
-            performRandomRunawayEvent(runaways);
+            performRandomRunwayEvent(runways);
             groundService.displayMessage();
             trafficControl.displayMessage();
             System.out.println();
@@ -28,19 +28,19 @@ public class App {
 
     }
 
-    private static List<Runaway> createRunaways(AirTrafficControl trafficControl, GroundService groundService) {
-        List<Runaway> runaways = new ArrayList<>();
+    private static List<Runway> createRunways(AirTrafficControl trafficControl, GroundService groundService) {
+        List<Runway> runways = new ArrayList<>();
 
         for (int i = 1; i < 4; i++) {
-            Runaway runaway = new Runaway("Runaway " + i);
-            runaways.add(runaway);
+            Runway runway = new Runway("Runway " + i);
+            runways.add(runway);
         }
-        return runaways;
+        return runways;
     }
 
-    private static void startRunaways(List<Runaway> runaways) {
-        for (Runaway runaway : runaways) {
-            runaway.setClear(true);
+    private static void startRunways(List<Runway> runways) {
+        for (Runway runway : runways) {
+            runway.setClear(true);
         }
     }
 
@@ -48,11 +48,11 @@ public class App {
         return (int) (Math.random() * (max - min));
     }
 
-    private static void performRandomRunawayEvent(List<Runaway> runaways) {
-        int changingRunawayIndex = getRandomNumber(0, 2);
-        Runaway runaway = runaways.get(changingRunawayIndex);
-        System.out.println("Changing " + runaway.getName());
-        runaway.setClear(!runaway.isClear());
+    private static void performRandomRunwayEvent(List<Runway> runways) {
+        int changingRunwayIndex = getRandomNumber(0, 2);
+        Runway runway = runways.get(changingRunwayIndex);
+        System.out.println("Changing " + runway.getName());
+        runway.setClear(!runway.isClear());
     }
 
 }

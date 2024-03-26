@@ -2,19 +2,19 @@ package it.unibz.airport;
 
 public class AirTrafficControl {
 
-    public String findAvailableRunaway(){
+    public String findAvailableRunway(){
 
         return null;
     }
 
     public void displayMessage() {
 
-        String availableRunaway = findAvailableRunaway();
-        if(availableRunaway == null) {
-            System.out.println("AIR TRAFFIC CONTROL: no runaways available!");
+        String availableRunway = findAvailableRunway();
+        if(availableRunway == null) {
+            System.out.println("AIR TRAFFIC CONTROL: no runways available!");
         }
         else {
-            System.out.printf("AIR TRAFFIC CONTROL: next available runaway %s%n", availableRunaway);
+            System.out.printf("AIR TRAFFIC CONTROL: next available runway %s%n", availableRunway);
         }
     }
 

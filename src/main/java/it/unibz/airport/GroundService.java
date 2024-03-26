@@ -2,14 +2,14 @@ package it.unibz.airport;
 
 public class GroundService {
 
-    private int numberOfAvailableRunaways = 0;
+    private int numberOfAvailableRunways = 0;
 
-    public int getNumberOfAvailableRunaways() {
-        return numberOfAvailableRunaways;
+    public int getNumberOfAvailableRunways() {
+        return numberOfAvailableRunways;
     }
     
     public void displayMessage() {
-        System.out.printf("GROUND SERVICE: Number of free runaways: %d%n", getNumberOfAvailableRunaways());
+        System.out.printf("GROUND SERVICE: Number of free runways: %d%n", getNumberOfAvailableRunways());
     }
 
 }
